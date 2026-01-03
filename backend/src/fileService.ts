@@ -16,7 +16,6 @@ let indexBuilt = false;
 // builds the sparse index by scanning the file once
 // time: O(n), space: O(n/CHUNK_SIZE)
 export async function buildIndex(filePath: string): Promise<void> {
-    console.log('building sparse index...');
     const startTime = Date.now();
 
     const absolutePath = path.resolve(filePath);
@@ -49,13 +48,6 @@ export async function buildIndex(filePath: string): Promise<void> {
 
     totalLines = lineCount;
     indexBuilt = true;
-
-    const elapsed = Date.now() - startTime;
-    const memoryUsed = (lineIndex.length * 8) / 1024;
-
-    console.log(`index built in ${elapsed}ms`);
-    console.log(`total lines: ${totalLines.toLocaleString()}`);
-    console.log(`index entries: ${lineIndex.length} (~${memoryUsed.toFixed(1)}KB)`);
 }
 
 // retrieves users starting from a specific line

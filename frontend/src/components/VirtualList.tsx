@@ -72,7 +72,7 @@ export function VirtualList({ scrollToIndex, onScrollToComplete }: VirtualListPr
         overscan: 5,
     });
 
-    // handle programmatic scroll to index (teleport)
+    // handle programmatic scroll to index
     if (scrollToIndex !== null && scrollToIndex >= 0 && totalCount > 0) {
         virtualizer.scrollToIndex(scrollToIndex, { align: 'start', behavior: 'smooth' });
         onScrollToComplete();
@@ -103,9 +103,6 @@ export function VirtualList({ scrollToIndex, onScrollToComplete }: VirtualListPr
             <div className="list-container">
                 <div className="error-container">
                     <h3 className="error-title">Failed to load data</h3>
-                    <p className="error-message">
-                        Make sure the backend server is running on port 3001
-                    </p>
                 </div>
             </div>
         );
@@ -118,10 +115,6 @@ export function VirtualList({ scrollToIndex, onScrollToComplete }: VirtualListPr
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <span className="list-info">
                         Total: {totalCount.toLocaleString()}
-                    </span>
-                    <span className="perf-badge">
-                        <span className="perf-dot" />
-                        {virtualItems.length} DOM nodes
                     </span>
                 </div>
             </div>

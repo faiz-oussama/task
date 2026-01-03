@@ -24,7 +24,6 @@ router.get('/users', async (req: Request, res: Response) => {
             },
         });
     } catch (error) {
-        console.error('error fetching users:', error);
         res.status(500).json({ error: 'failed to fetch users' });
     }
 });

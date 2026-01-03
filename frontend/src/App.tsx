@@ -8,13 +8,11 @@ export default function App() {
     const [currentLetter, setCurrentLetter] = useState('A');
     const [scrollToIndex, setScrollToIndex] = useState<number | null>(null);
 
-    // handles clicking a letter in the alphabet nav
     const handleLetterClick = useCallback((letter: string, lineIndex: number) => {
         setCurrentLetter(letter);
         setScrollToIndex(lineIndex);
     }, []);
 
-    // called after scroll animation completes
     const handleScrollComplete = useCallback(() => {
         setScrollToIndex(null);
     }, []);
@@ -23,8 +21,6 @@ export default function App() {
         <div className="app">
             <header className="header">
                 <div className="header-content">
-                    <h1 className="logo">NameViewer</h1>
-
                     <div className="stats-bar">
                         <div className="stat-item">
                             <div className="stat-value">
@@ -45,14 +41,6 @@ export default function App() {
                                 {isStatsLoading ? '...' : `${stats?.chunkSize}`}
                             </div>
                             <div className="stat-label">Chunk Size</div>
-                        </div>
-
-                        <div className="stat-item">
-                            <div className="stat-value perf-badge">
-                                <span className="perf-dot" />
-                                Virtualized
-                            </div>
-                            <div className="stat-label">Rendering</div>
                         </div>
                     </div>
                 </div>
